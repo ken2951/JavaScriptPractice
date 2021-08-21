@@ -15,36 +15,27 @@
  */
 
 const $result = document.querySelector("#result");
-console.log($result);
-
-// const $increase = document.querySelector("#increase");
-// console.log($increase);
-
-// const $reset = document.querySelector("#reset");
-// console.log($reset);
-
-// const $decrease = document.querySelector("#decrease");
-// console.log($decrease);
-
-let result = $result.textContent;
-console.log(result);
-
-document.querySelector("#increase").addEventListener("click", onClickButton);
-document.querySelector("#reset").addEventListener("click", onClickButton);
-document.querySelector("#decrease").addEventListener("click", onClickButton);
+let result = Number($result.textContent);
 
 const onClickButton = (event) => {
   switch (event.target.textContent) {
     case "+":
-      $result.textContent += 1;
+      result += 1;
+      $result.textContent = result;
       break;
     case "reset":
-      $result.textContent = 0;
+      result = 0;
+      $result.textContent = result;
       break;
     case "-":
-      $result.textContent -= 1;
+      result -= 1;
+      $result.textContent = result;
       break;
     default:
       break;
   }
 };
+
+document.querySelector("#increase").addEventListener("click", onClickButton);
+document.querySelector("#reset").addEventListener("click", onClickButton);
+document.querySelector("#decrease").addEventListener("click", onClickButton);
