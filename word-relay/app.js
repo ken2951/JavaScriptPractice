@@ -1,32 +1,59 @@
-const number = Number(prompt("몇 명이 참가하나요?"));
-const $button = document.querySelector("button");
-const $input = document.querySelector("input");
-const $word = document.querySelector("#word");
 const $order = document.querySelector("#order");
-let word; // 제시어
-let newWord; // 현재 단어
-const onClickButton = () => {
-  if (!word || word[word.length - 1] === newWord[0]) {
-    // 제시어가 비어 있거나 올바른 단어인가?
-    word = newWord; // 입력한 단어가 제시어가 된다.
-    $word.textContent = word; // 화면에 제시어 표시
-    const order = Number($order.textContent);
-    if (order + 1 > number) {
-      $order.textContent = 1;
+const $word = document.querySelector("#word");
+const $input = document.querySelector("#inputText");
+
+let number;
+let word;
+let nextWord;
+
+const onClickInput = (event) => {
+  if ($input.value.length === 3) {
+    if (!word) {
+      word = $input.value;
+      $word.textContent = $input.value;
+      $input.value = "";
+      return;
+    }
+
+    nextWord = $input.value;
+    if (word[word.length - 1] === nextWord[0]) {
+      word = nextWord;
+      $word.textContent = nextWord;
+      $input.value = "";
+
+      if (Number($order.textContent) + 1 > number) {
+        $order.textContent = 1;
+      } else {
+        $order.textContent = Number($order.textContent) + 1;
+      }
     } else {
-      $order.textContent = order + 1;
+      alert("올바르지 않은 단어입니다.");
     }
   } else {
-    // 올바르지 않다.
-    alert("올바르지 않은 단어입니다!");
+    alert("3글자 단어를 입력해주세요.");
   }
-  $input.value = "";
-  $input.focus();
 };
 
-const onInput = (event) => {
-  newWord = event.target.value; // 입력한 단어를 현재 단어로
-};
+function init() {
+  while (!number) {
+    const start = prompt("몇 명이 참가하나요?");
+    //prompt 미입력 -> 확인버튼 클릭 결과
+    //값=공백, Number->0, parseInt->NaN, isNaN->false, typeof->string
 
-$button.addEventListener("click", onClickButton);
-$input.addEventListener("input", onInput);
+    if (start === null) {
+      alert("게임을 종료합니다.");
+      return;
+    } else if (Number(start) === 0 || isNaN(Number(start))) {
+      alert("1이상의 숫자를 입력해주세요.");
+    } else {
+      alert("게임을 시작합니다.");
+      number = parseInt(start);
+    }
+  }
+
+  document
+    .querySelector("#inputButton")
+    .addEventListener("click", onClickInput);
+}
+
+init();
