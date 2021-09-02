@@ -1,8 +1,11 @@
+//## 랜덤 숫자 만드는 함수 만들기
 function getRandomNumber(num1, num2) {
-  //return random number;
+  min = Math.ceil(num1 + 0.1);
+  max = Math.floor(num2);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
-function init() {
+{
   alert(
     "두 숫자를 입력해주세요.\n(첫번째 숫자는 두번째 숫자보다 작아야합니다.)"
   );
@@ -23,7 +26,7 @@ function init() {
     message2 =
       "두번째 숫자를 입력해주세요.\n(첫번째 숫자보다 큰 숫자를 입력해주세요.)";
   }
-  return console.log(getRandomNumber(num1, num2));
+  console.log(getRandomNumber(num1, num2));
 }
 
-init();
+//## 확장자 구별 함수 만들기
