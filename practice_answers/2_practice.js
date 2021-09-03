@@ -5,7 +5,7 @@ function getRandomNumber(num1, num2) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-{
+const init = () => {
   alert(
     "두 숫자를 입력해주세요.\n(첫번째 숫자는 두번째 숫자보다 작아야합니다.)"
   );
@@ -13,7 +13,9 @@ function getRandomNumber(num1, num2) {
   let message1 = "첫번째 숫자를 입력해주세요.";
   while (true) {
     num1 = prompt(message1);
-    console.log(num1); //esc -> null
+    if (num1 === null) {
+      return init;
+    }
     if (num1 !== "" && !isNaN(num1)) {
       num1 = Number(num1);
       break;
@@ -23,7 +25,10 @@ function getRandomNumber(num1, num2) {
   let num2;
   let message2 = "두번째 숫자를 입력해주세요.";
   while (true) {
-    num2 = Number(prompt(message2));
+    num2 = prompt(message2);
+    if (num2 === null) {
+      return init;
+    }
     if (num1 !== "" && !isNaN(num1) && num1 < num2) {
       num2 = Number(num2);
       break;
@@ -32,7 +37,9 @@ function getRandomNumber(num1, num2) {
       "두번째 숫자를 입력해주세요.\n(첫번째 숫자보다 큰 숫자를 입력해주세요.)";
   }
   console.log(getRandomNumber(num1, num2));
-}
+};
+
+init();
 
 //## 확장자 구별 함수 만들기
 function checkFileExtension(fileExtension) {
