@@ -43,8 +43,7 @@ init();
 
 //## 확장자 구별 함수 만들기
 function checkExtensionType(fileName) {
-  const fileNameArray = fileName.split(".");
-  const extensionType = fileNameArray[1];
+  const extensionType = fileName.split(".")[1];
 
   switch (extensionType) {
     case "png":
