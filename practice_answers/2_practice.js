@@ -42,17 +42,17 @@ const init = () => {
 init();
 
 //## 확장자 구별 함수 만들기
-function checkFileExtension(fileExtension) {
-  let fileType;
+function checkExtensionType(fileName) {
+  const fileNameArray = fileName.split(".");
+  const extensionType = fileNameArray[1];
 
-  switch (fileExtension) {
+  switch (extensionType) {
     case "png":
     case "jpg":
     case "jpeg":
     case "gif":
     case "bmp": {
-      fileType = "image";
-      break;
+      return "image";
     }
     case "mov":
     case "mp4":
@@ -61,32 +61,23 @@ function checkFileExtension(fileExtension) {
     case "mpg":
     case "mpeg":
     case "mkv": {
-      fileType = "video";
-      break;
+      return "video";
     }
     case "pdf":
     case "doc":
     case "docx": {
-      fileType = "doc";
-      break;
+      return "doc";
     }
     default: {
-      fileType = "none";
-      break;
+      return "none";
     }
   }
-
-  return fileType;
 }
 
 {
-  let str = prompt(
+  let fileName = prompt(
     "파일 이름과 확장자를 입력해주세요.\n입력 형식: 파일이름.확장자"
   );
 
-  const strArray = str.split(".");
-  const fileExtension = strArray[1];
-
-  console.log(checkFileExtension(fileExtension));
-  //단, 파일이름은 확장자명과 같은 문자열로 만들지 않는다.???
+  console.log(checkExtensionType(fileName));
 }
