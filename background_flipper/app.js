@@ -1,7 +1,7 @@
 const $buttons = document.querySelectorAll("button");
 const $background = document.querySelector(".background");
 
-let tempTarget;
+let clickedButton;
 
 const onClickButton = (event) => {
   const target = event.target;
@@ -9,9 +9,9 @@ const onClickButton = (event) => {
   const RESET = "RESET";
   const resetColor = "white";
 
-  if (tempTarget) {
-    tempTarget.style.color = resetColor;
-    tempTarget.style.background = tempTarget.textContent;
+  if (clickedButton) {
+    clickedButton.style.color = resetColor;
+    clickedButton.style.background = clickedButton.textContent;
   }
 
   if (color === RESET) {
@@ -23,7 +23,7 @@ const onClickButton = (event) => {
   target.style.color = color;
   target.style.background = resetColor;
 
-  tempTarget = target;
+  clickedButton = target;
 };
 
 $buttons.forEach((button) => {
