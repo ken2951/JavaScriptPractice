@@ -3,10 +3,12 @@ body {
 }
 .wrapper {
   width: 225px;
-  height: 325px;
+  height: 345px;
   margin: 100px auto;
   background: black;
-  padding: 30px 10px 10px 10px;
+  padding: 40px 10px 10px 10px;
+  font-weight: bold;
+  border-radius: 1em;
 }
 .wrapper div {
   height: 50px;
@@ -15,8 +17,9 @@ body {
 }
 .window {
   text-align: right;
-  font-size: 35px;
+  font-size: 40px;
   color: white;
+  /* margin-bottom: 10px; <-왜 적용이 안될까요?? */
 }
 .window span {
   padding-right: 15px;
@@ -24,7 +27,6 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* text-align: center; */
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
@@ -43,20 +45,7 @@ body {
   color: white;
 }
 .button {
-  border-radius: 2em;
+  border-radius: 1em;
   text-align: center;
-}
-.button-zero1 {
-  border-top-left-radius: 2em;
-  border-bottom-left-radius: 2em;
-  border-top-right-radius: 2em;
-  border-bottom-right-radius: 2em;
-}
-.grid-container2 {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  margin-top: 190px;
-  text-align: center;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  /* vertical-align: middle; <-왜 적용이 안될까요?? */
 }
