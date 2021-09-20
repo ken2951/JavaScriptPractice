@@ -3,7 +3,7 @@ body {
 }
 .wrapper {
   width: 225px;
-  height: 355px;
+  height: 350px;
   margin: 100px auto;
   background: black;
   padding: 30px 10px 10px 10px;
@@ -19,7 +19,6 @@ body {
   text-align: right;
   font-size: 40px;
   color: white;
-  /* margin-bottom: 10px; <-왜 적용이 안될까요?? */
 }
 .window span {
   padding-right: 15px;
@@ -30,9 +29,6 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 5px;
-}
-.grid-container div {
-  padding-top: 5px;
 }
 .top {
   background: darkgray;
@@ -48,9 +44,9 @@ body {
 .button {
   border-radius: 1em;
   text-align: center;
-  height: 50px;
+  height: 54px;
 }
 .button-text {
   display: inline-block;
-  padding-top: 11px;
+  padding-top: 15px;
 }

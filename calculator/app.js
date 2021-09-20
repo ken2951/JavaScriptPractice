@@ -1,20 +1,23 @@
 const $window = document.querySelector("#window");
 const $buttons = document.querySelector("#button-container");
-const $clear = document.querySelector("#clear");
+console.log($buttons);
 
 function handleClickButton(event) {
   console.log("click button");
   const target = event.target;
+  console.log(target.id);
 
   if (target.id === "clear") {
-    handleClickClear(target);
+    handleClickClear();
     return;
   }
 }
 
-function handleClickClear(target) {
+function handleClickClear() {
   console.log("clear");
-  target.text;
+  $window.textContent = "0";
+  //window text 0
+  //buff 0 ?
 }
 
 $buttons.addEventListener("click", handleClickButton);

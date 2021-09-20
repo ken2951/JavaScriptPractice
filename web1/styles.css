@@ -1,0 +1,25 @@
+body {
+  width: auto;
+}
+
+.a {
+  /* margin: auto;
+  width: 200px;
+  height: auto; */
+  border: 1px solid black;
+  text-align: center;
+  display: inline-block;
+  padding-bottom: 15px;
+  padding-top: 12px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+.b {
+  border: 1px solid black;
+  text-align: center;
+  display: inline-block;
+  padding-bottom: 15px;
+  padding-top: 12px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
