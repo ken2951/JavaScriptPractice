@@ -21,7 +21,7 @@ body {
   color: white;
 }
 .window span {
-  padding-right: 15px;
+  padding-right: 10px;
   padding-bottom: 15px;
 }
 .grid-container {
@@ -37,7 +37,8 @@ body {
   background: orange;
   color: white;
 }
-.number {
+.number,
+.back-space {
   background: gray;
   color: white;
 }

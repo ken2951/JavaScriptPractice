@@ -1,13 +1,13 @@
 const $window = document.querySelector("#window");
 const $buttons = document.querySelector("#button-container");
 
-let num1;
-let num2;
-let operator;
+let num1 = "";
+let num2 = "";
+let operator = "";
 
 function handleClickButton(event) {
   const className = event.target.className;
-  const textContent = event.target.textContent;
+  const textContent = event.target.textContent.trim();
 
   if (className.includes("clear")) {
     handleClickAllClear();
@@ -23,24 +23,56 @@ function handleClickButton(event) {
     handleClickOperator(textContent);
     return;
   }
+
+  if (className.includes("back-space")) {
+    handleClickBackSpace(textContent);
+    return;
+  }
 }
 
 function handleClickAllClear() {
   $window.textContent = "0";
-  [num1, num2, operator] = [null, null, null]; // 초기화?
+  [num1, num2, operator] = ["", "", ""];
 }
 
 function handleClickNumber(textContent) {
+  //가장 앞에 0과.은 올수없다
+  //.은 한번만 사용가능
+  // if ((textContent === "0" || textContent === ".") && !num2) {
+  //   if (!num1) return;
+  // }
+
   if (!operator) {
     num1 += textContent;
+    $window.textContent = num1;
   } else {
     num2 += textContent;
+    $window.textContent = num2;
   }
-  console.log(num1);
 }
 
 function handleClickOperator(textContent) {
-  //
+  if (textContent === "+/-")
+    if (!operator && num1 !== "") {
+      num1 = -num1;
+      $window.textContent = num1;
+    } else if (num2 !== "") {
+      num2 = -num2;
+      $window.textContent = num2;
+    }
+}
+
+function handleClickBackSpace(textContent) {
+  if (!operator) {
+    num1 = num1.slice(0, -1);
+    $window.textContent = num1;
+  } else {
+    num2 = num2.slice(0, -1);
+    $window.textContent = num2;
+  }
+  if (!$window.textContent) {
+    $window.textContent = "0";
+  }
 }
 
 $buttons.addEventListener("click", handleClickButton);
