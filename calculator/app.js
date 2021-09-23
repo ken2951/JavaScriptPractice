@@ -1,23 +1,46 @@
 const $window = document.querySelector("#window");
 const $buttons = document.querySelector("#button-container");
-console.log($buttons);
+
+let num1;
+let num2;
+let operator;
 
 function handleClickButton(event) {
-  console.log("click button");
-  const target = event.target;
-  console.log(target.id);
+  const className = event.target.className;
+  const textContent = event.target.textContent;
 
-  if (target.id === "clear") {
-    handleClickClear();
+  if (className.includes("clear")) {
+    handleClickAllClear();
+    return;
+  }
+
+  if (className.includes("number")) {
+    handleClickNumber(textContent);
+    return;
+  }
+
+  if (className.includes("operator")) {
+    handleClickOperator(textContent);
     return;
   }
 }
 
-function handleClickClear() {
-  console.log("clear");
+function handleClickAllClear() {
   $window.textContent = "0";
-  //window text 0
-  //buff 0 ?
+  [num1, num2, operator] = [null, null, null]; // 초기화?
+}
+
+function handleClickNumber(textContent) {
+  if (!operator) {
+    num1 += textContent;
+  } else {
+    num2 += textContent;
+  }
+  console.log(num1);
+}
+
+function handleClickOperator(textContent) {
+  //
 }
 
 $buttons.addEventListener("click", handleClickButton);
