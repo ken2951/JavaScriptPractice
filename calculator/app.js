@@ -52,14 +52,55 @@ function handleClickNumber(textContent) {
 }
 
 function handleClickOperator(textContent) {
-  if (textContent === "+/-")
-    if (!operator && num1 !== "") {
+  if (textContent === "=") {
+    let result = "";
+
+    if (operator && num1 && num2) {
+      num1 = Number(num1);
+      num2 = Number(num2);
+
+      switch (operator) {
+        case "%": {
+          result = num1 % num2;
+          break;
+        }
+        case "÷": {
+          result = num1 / num2;
+          break;
+        }
+        case "×": {
+          result = num1 * num2;
+          break;
+        }
+        case "-": {
+          result = num1 - num2;
+          break;
+        }
+        case "+": {
+          result = num1 + num2;
+          break;
+        }
+      }
+    }
+    $window.textContent = result;
+    num1 = "";
+    num2 = "";
+    operator = "";
+  }
+
+  if (textContent === "+/-") {
+    if (!operator && num1) {
       num1 = -num1;
       $window.textContent = num1;
-    } else if (num2 !== "") {
+    } else if (num2) {
       num2 = -num2;
       $window.textContent = num2;
     }
+    return;
+  }
+  if (num1 !== "") {
+    operator = textContent;
+  }
 }
 
 function handleClickBackSpace(textContent) {
