@@ -4,6 +4,7 @@ const $buttons = document.querySelector("#button-container");
 let num1 = "";
 let num2 = "";
 let operator = "";
+let result = "";
 
 function handleClickButton(event) {
   const className = event.target.className;
@@ -32,19 +33,50 @@ function handleClickButton(event) {
 
 function handleClickAllClear() {
   $window.textContent = "0";
-  [num1, num2, operator] = ["", "", ""];
+  [num1, num2, operator, result] = ["", "", "", ""];
 }
 
 function handleClickNumber(textContent) {
-  //가장 앞에 0과.은 올수없다
-  //.은 한번만 사용가능
-  // if ((textContent === "0" || textContent === ".") && !num2) {
-  //   if (!num1) return;
-  // }
-
   if (!operator) {
-    num1 += textContent;
-    $window.textContent = num1;
+    if (!num1 && textContent === "0") {
+      return;
+    }
+  } else {
+    if (!num2 && textContent === "0") {
+      return;
+    }
+  }
+
+  if (textContent === ".") {
+    if (result) {
+      num1 = "0";
+      result = "";
+    }
+    if (!operator) {
+      if (num1.includes(".")) {
+        return;
+      }
+      if (!num1) {
+        num1 = "0";
+      }
+    } else {
+      if (num2.includes(".")) {
+        return;
+      }
+      if (!num2) {
+        num2 = "0";
+      }
+    }
+  }
+  if (!operator) {
+    if (result) {
+      num1 = textContent;
+      $window.textContent = num1;
+      result = "";
+    } else {
+      num1 += textContent;
+      $window.textContent = num1;
+    }
   } else {
     num2 += textContent;
     $window.textContent = num2;
@@ -53,8 +85,6 @@ function handleClickNumber(textContent) {
 
 function handleClickOperator(textContent) {
   if (textContent === "=") {
-    let result = "";
-
     if (operator && num1 && num2) {
       num1 = Number(num1);
       num2 = Number(num2);
@@ -81,11 +111,12 @@ function handleClickOperator(textContent) {
           break;
         }
       }
+      $window.textContent = result;
+      num1 = result;
+      num2 = "";
+      operator = "";
     }
-    $window.textContent = result;
-    num1 = "";
-    num2 = "";
-    operator = "";
+    return;
   }
 
   if (textContent === "+/-") {
@@ -98,8 +129,10 @@ function handleClickOperator(textContent) {
     }
     return;
   }
+
   if (num1 !== "") {
     operator = textContent;
+    return;
   }
 }
 
