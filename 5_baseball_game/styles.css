@@ -38,6 +38,9 @@ body {
   text-align: center;
   font-size: 20px;
 }
+.input:invalid {
+  border: red solid 1px;
+}
 .button {
   position: absolute;
   background: #92cfbf;
