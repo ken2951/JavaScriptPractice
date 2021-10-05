@@ -5,5 +5,12 @@
 //숫자 일치 자리수 불일치 B
 //숫자 자리수 불일치 O
 
-let num = Math.floor(Math.random() * (10 - 1) + 1);
-console.log(num);
+let numArray = [];
+
+while (numArray.length < 4) {
+  let num = Math.floor(Math.random() * (10 - 1) + 1);
+  if (numArray.includes(num)) {
+    numArray.push();
+  }
+}
+console.log(numArray);
