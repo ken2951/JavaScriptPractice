@@ -1,3 +1,4 @@
+const $window = document.querySelector(".window");
 const $input = document.querySelector(".input");
 const $button = document.querySelector(".button");
 $button.addEventListener("click", handleClickbutton);
@@ -14,12 +15,27 @@ while (numArray.length < 3) {
 
 console.log(numArray);
 
+let inputValue;
 //3개의 숫자를 입력 받아서 비교
 function handleClickbutton() {
-  const inputValue = $input.value;
-  console.log(inputValue);
+  inputValue = $input.value;
+  let result = checkNumber(inputValue);
+  $window.textContent = result;
+  console.log(result);
 }
 
+function checkNumber(inputValue) {
+  let result;
+  const inputArray = inputValue.split("");
+  console.log(inputArray);
+  for (let i = 0; i < 3; i++) {
+    if (numArray[i] === inputArray[i]) {
+      result = "S";
+    }
+  }
+
+  return result;
+}
 //결과 출력
 //숫자 자리수 일치 S
 //숫자 일치 자리수 불일치 B
