@@ -12,7 +12,7 @@ while (numArray.length < 3) {
     numArray.push(num);
   }
 }
-
+//랜덤 숫자 확인용
 console.log(numArray);
 
 let inputValue;
@@ -20,23 +20,34 @@ let inputValue;
 function handleClickbutton() {
   inputValue = $input.value;
   let result = checkNumber(inputValue);
-  $window.textContent = result;
+  // $window.textContent = result;
+  //결과 확인용
   console.log(result);
 }
 
-function checkNumber(inputValue) {
-  let result;
-  const inputArray = inputValue.split("");
-  console.log(inputArray);
-  for (let i = 0; i < 3; i++) {
-    if (numArray[i] === inputArray[i]) {
-      result = "S";
-    }
-  }
-
-  return result;
-}
 //결과 출력
 //숫자 자리수 일치 S
 //숫자 일치 자리수 불일치 B
 //숫자 자리수 불일치 O
+function checkNumber(inputValue) {
+  let resultArray = [];
+  const inputArray = inputValue.split("");
+  //입력 숫자 확인용
+  console.log(inputArray);
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (i === j) {
+        if (numArray[i] === inputArray[j]) {
+          resultArray.push("S");
+          break;
+        }
+      }
+      if (numArray[i] === inputArray[j]) {
+        resultArray.push("B");
+        break;
+      }
+      resultArray.push("O");
+    }
+  }
+  return resultArray;
+}
