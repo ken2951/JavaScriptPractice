@@ -14,6 +14,16 @@ function handleClickButton() {
     array.push(input.value);
   });
   console.log(array);
+  const num1 = getLottoNumber();
+  console.log(num1);
+}
+
+function getLottoNumber() {
+  //1~45의 랜덤 숫자 7개
+  const min = 1;
+  const max = 45;
+  let num1 = Math.floor(Math.random() * (max + 1 - min) + 1);
+  return num1;
 }
 
 $button.addEventListener("click", handleClickButton);
