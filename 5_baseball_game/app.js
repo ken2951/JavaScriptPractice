@@ -1,10 +1,11 @@
 const $window = document.querySelector(".window");
 const $input = document.querySelector(".input");
 const $button = document.querySelector(".button");
-$button.addEventListener("click", handleClickbutton);
 
 let numArray = [];
 let inputValue;
+
+const status = ["PLAY", "END"];
 
 while (numArray.length < 3) {
   let num = Math.floor(Math.random() * (10 - 1) + 1);
@@ -38,3 +39,5 @@ function checkNumber(inputValue) {
 
   return resultArray;
 }
+
+$button.addEventListener("click", handleClickbutton);
