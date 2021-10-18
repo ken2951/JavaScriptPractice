@@ -2,6 +2,10 @@ body {
   width: auto;
 }
 
+.wrapper {
+  background: bisque;
+}
+
 .a {
   /* margin: auto;
   width: 200px;
