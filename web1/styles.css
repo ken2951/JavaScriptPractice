@@ -7,18 +7,16 @@
   min-height: 100vh;
 } */
 .parent {
+  height: 500px;
   background: bisque;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  /* align-content: center; */
 }
-.child1 {
-  border: 1px solid;
-  width: 100px;
-  height: 100px;
-}
-
-.child2 {
+.child {
   border: 1px solid;
   width: 100px;
   height: 100px;
